@@ -11,30 +11,37 @@
 <!-- Fromulario de creacion de comentario -->
     <a href="/info">Informacion<a/>
     <hr>
+    <h1>Contacto</h1>
 
-    <form action="/comentario" method ="POST" >
+    @include('parciales.form-error')
+
+    <form action="{{ route('comentario.store') }}" method ="POST" >
         @csrf
         <div class="container">
-          <h1>Contacto</h1>
           <hr>
-      
           <label for="nombre"><b>Nombre</b></label>
-          <input type="text" placeholder="Ingrese su nombre" name="nombre" value=" {{ old('nombre')}}" id="nombre" required>
+          <input type="text" placeholder="Ingrese su nombre" name="nombre" value=" {{ old('nombre')}}" required>
+          @error('nombre')
+              <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
           <br>
       
           <label for="correo"><b>Correo</b></label>
           <input type="text" placeholder="Ingrese su correo" name="correo" value=" {{ old('correo')}}" id="correo" required>
+          @error('correo')
+            <div class="alert alert-danger">{{ $message }}</div>
+          @enderror
           <br>
 
           <label for="ciudad"><b>Ciudad</b></label>
           <select name="ciudad">
-            <option value="guadalajara">Guadalajara</option>
-            <option value="monterrey"> MTY</option>
+            <option value="guadalajara" @selected(old('ciudad') == 'guadalajara') >Guadalajara</option>
+            <option value="monterrey" @selected(old('ciudad') == 'monterrey')> MTY</option>
           </select>
           <br>
 
           <label><b>Comentario</b></label>
-          <textarea rows="6" placeholder="Tu mensaje" id="comentario" name="comentario" value=" {{ old('comentario')}}"  required ></textarea>
+          <textarea rows="6" placeholder="Tu mensaje" id="comentario" name="comentario" cols="30" rows="5" value=" {{ old('comentario')}}"  required ></textarea>
           <br>
       
           <button type="submit" class="registerbtn">Enviar</button>

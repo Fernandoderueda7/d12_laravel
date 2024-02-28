@@ -9,28 +9,29 @@
 <body>
 
 <!-- Fromulario de edicion de comentario -->
-    <a href="/info">Informacion<a/>
+    <a href="{{ route('comentario.index') }}">Listado de Comentarios</a>
     <hr>
+    <h1>Editar Comentario</h1>
+
+    @include('parciales.form-error')
 
     <form action="{{ route('comentario.update', $comentario) }}" method ="POST" >
         @csrf
         @method('PATCH')
         <div class="container">
-          <h1>Editar comentario</h1>
-          <hr>
       
           <label for="nombre"><b>Nombre</b></label>
-          <input type="text" placeholder="Ingrese su nombre" name="nombre" value= "{{ old('nombre') ?? $comentario -> nombre}}" id="nombre" required>
+          <input type="text" placeholder="Ingrese su nombre" name="nombre" value= "{{ old('nombre') ?? $comentario -> nombre}}" id="nombre">
           <hr>
       
           <label for="correo"><b>Correo</b></label>
-          <input type="text" placeholder="Ingrese su correo" name="correo" value= "{{ old('correo') ?? $comentario -> correo}}" id="correo" required>
+          <input type="text" placeholder="Ingrese su correo" name="correo" value= "{{ old('correo') ?? $comentario -> correo}}" id="correo" >
           <hr>
 
           <label for="ciudad"><b>Ciudad</b></label>
           <select name="ciudad">
-            <option value="guadalajara" @selected($comentario -> ciudad = 'guadalajara') >Guadalajara</option>
-            <option value="monterrey" @selected($comentario -> ciudad = 'monterrey') >MTY</option>
+            <option value="guadalajara" @selected($comentario -> ciudad == 'guadalajara') >Guadalajara</option>
+            <option value="monterrey" @selected($comentario -> ciudad == 'monterrey') >MTY</option>
           </select>
           <br>
 
