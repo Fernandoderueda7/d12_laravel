@@ -11,7 +11,7 @@
 <!-- Fromulario de creacion de comentario -->
     <a href="/info">Informacion<a/>
     <hr>
-    <h1>Contacto</h1>
+    <h1>Crear comentarios</h1>
 
     @include('parciales.form-error')
 
