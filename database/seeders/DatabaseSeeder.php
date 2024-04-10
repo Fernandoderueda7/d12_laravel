@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()
             ->withPersonalTeam()
+            ->has(Comentario::factory()->count(4))
             ->create([
                 'name' => 'Test User',
                 'email' => 'test@example.com',
