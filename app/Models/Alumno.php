@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Alumno extends Model
 {
     use HasFactory;
+
+    public function materias()
+    {
+        return $this->belongsToMany(Materia::class);
+    }
 }

@@ -21,7 +21,7 @@ class AlumnoFactory extends Factory
             
                 'nombre' => $this->faker->name(),
                 'correo' => $this->faker->unique()->safeEmail(),
-                'codigo' => $this->faker->unique()->randomNumber(9)
+                'codigo' => $this->faker->randomNumber(9, true),
         ];
     }
 }

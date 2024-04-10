@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Materia>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comentario>
  */
-class MateriaFactory extends Factory
+class ComentarioFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,8 @@ class MateriaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            'nombre' => fake()->words(3, true),
-            
+            'comentario' => fake()->sentence(),
+            'ciudad' => fake()->randomElement(['Guadalajara', 'Toanalá', 'CDMX']),
         ];
     }
 }

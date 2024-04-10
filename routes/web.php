@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\SitioController;
+use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\ComentarioController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\SitioController;
 use App\Models\Comentario;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +22,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/info', function () {
-//     return "HOLA MUNDO";
-// });
-
 Route::get('/info/{tipo?}', [SitioController::class, 'info']);
 
-// Route::get('/comentario/create',  [ComentarioController::class, 'create']);
-// Route::post('/comentario-guarda', [ComentarioController::class, 'store'] );
-Route::resource('comentario', ComentarioController::class); //-> middleware('auth');
+// Route::get('/comentario/create', [ComentarioController::class, 'create']);
+// Route::post('/comentario-guarda', [ComentarioController::class, 'store']);
+Route::resource('comentario', ComentarioController::class);
+Route::resource('alumno', AlumnoController::class);
+Route::get('/alumno/{alumno}/agendar-materia', [AlumnoController::class, 'agendarMateria'])->name('alumno.agendar-materia');
+Route::post('/alumno/{alumno}/relacionar-materia-alumno', [AlumnoController::class, 'relacionarMateriaConAlumno'])->name('alumno.relacionar-materia-alumno');
 
 Route::middleware([
     'auth:sanctum',
@@ -40,4 +39,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::get('/admin/usuario/demo', function () {
+   return view('demo'); 
 });
