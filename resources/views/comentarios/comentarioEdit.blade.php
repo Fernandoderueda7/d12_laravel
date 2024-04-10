@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>EDITAR COMENTARIO</title>
-</head>
-<body>
-
-<!-- Fromulario de edicion de comentario -->
-    <a href="{{ route('comentario.index') }}">Listado de Comentarios</a>
-    <hr>
-    <h1>Editar Comentario</h1>
+<x-mi-layout titulo="Editar Comentario">
 
     @include('parciales.form-error')
 
@@ -42,7 +29,4 @@
           <button type="submit" class="registerbtn">Enviar</button>
         </div>
     </form>
-    <br><br>
-
-</body>
-</html>
+</x-mi-layout>

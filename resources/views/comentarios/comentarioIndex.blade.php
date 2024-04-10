@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Comentario</title>
-</head>
-<body>
-    <a href="{{ route('comentario.create') }}">Nuevo Comentario</a>
+<x-mi-layout titulo="Listado Comentarios">
+    <a class="btn btn-primary" href="{{ route('comentario.create') }}">Nuevo Comentario</a>
     <h1>Lista de comentarios</h1>
-    <table border=1>
+    <table class="table">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -38,5 +31,4 @@
             @endforeach
         </tbody>
     </table>
-</body>
-</html>
+</x-mi-layout>
