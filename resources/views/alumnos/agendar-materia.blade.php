@@ -7,7 +7,7 @@
             <label for="materia">Materia</label>
             <select name="materia_id[]" id="materia" class="form-control" multiple>
                 @foreach ($materias as $materia)
-                    <option value="{{ $materia->id }}">{{ $materia->nombre }}</option>
+                    <option value="{{ $materia->id }}" @selected(false !== array_search($materia->id, $alumno->materias->pluck('id')->toArray()))>{{ $materia->nombre }}</option>
                 @endforeach
             </select>
         </div>
